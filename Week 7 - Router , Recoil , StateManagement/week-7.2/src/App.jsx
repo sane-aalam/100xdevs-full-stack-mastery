@@ -21,9 +21,21 @@ function Count() {
   return (
     <div>
       <CounterRender />
+      <EvenComponentRender />
       <Button />
     </div>
   );
+}
+
+//* Render Component
+// currentCount value is even,Then render the component,otherwise return null
+function EvenComponentRender() {
+  const countValue = useRecoilValue(countAtom);
+  if (countValue % 2 == 0) {
+    return <div style={{ backgroundColor: "gray" }}> Value is Even </div>;
+  } else {
+    return <div>{null}</div>;
+  }
 }
 
 // Div Which show into Display
