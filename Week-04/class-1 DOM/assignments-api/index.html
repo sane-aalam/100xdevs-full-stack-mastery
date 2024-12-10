@@ -1,0 +1,39 @@
+<!-- Backend server : https://sum-server.100xdevs.com/sum?a=1&b=2 -->
+
+<html>
+  <head>
+    <title>Add Numbers</title>
+  </head>
+  <script>
+    async function addNumbersAPI() {
+      const a = document.getElementById("firstNumber").value;
+      const b = document.getElementById("secondNumber").value;
+      const response = await fetch(
+        "https://sum-server.100xdevs.com/sum?a=" + a + "&b=" + b
+      );
+      const ans = await response.text();
+      const finalSum = document.getElementById("finalSum");
+      // assign result value to finalSum
+      finalSum.innerHTML = ans;
+    }
+  </script>
+  <body>
+    <div class="container">
+      <input
+        type="text"
+        name="firstNumber"
+        id="firstNumber"
+        placeholder="Enter the first number"
+      />
+      <input
+        type="text"
+        name="secondNumber"
+        id="secondNumber"
+        placeholder="Enter the second number"
+      />
+      <button onclick="addNumbersAPI()">Add Numbers</button>
+      <!-- Output sum -->
+      <div id="finalSum"></div>
+    </div>
+  </body>
+</html>
