@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <div id="buttonParent"></div>
+    <script>
+      // step-1 Define the inital state
+      // step-2 update the state
+      // step-3 define your components which take props, state as arugments
+
+      let state = {
+        count: 0,
+      };
+
+      function onButtonPress() {
+        // update the current state, re-render the componet
+        // re-render the buttonComponentReRender
+        state.count++;
+        buttonComponentReRender();
+        // recursion - working
+      }
+
+      function buttonComponentReRender() {
+        document.getElementById("buttonParent").innerHTML = "";
+        const component = buttonComponent(state.count);
+        // push into the buttonParent
+        document.getElementById("buttonParent").appendChild(component);
+      }
+
+      function buttonComponent(count) {
+        // create the button using .createElement
+        // set innerHTML(count) value,which coming global state
+        const button = document.createElement("button");
+        button.innerHTML = `Counter ${count}`;
+        button.setAttribute("onclick", `onButtonPress()`);
+        return button;
+      }
+
+      buttonComponentReRender();
+    </script>
+  </body>
+</html>
